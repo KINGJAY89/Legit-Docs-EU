@@ -3,149 +3,230 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>LegitDoc EU | Document Verification & Services</title>
+    <title>LegitDoc EU | Premium Document Concierge</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
-        /* Modern Minimalist CSS */
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            line-height: 1.6;
-            margin: 0;
-            color: #333;
-            background-color: #f4f7f6;
+        :root {
+            --primary: #002366; /* Royal Navy */
+            --accent: #D4AF37; /* Metallic Gold */
+            --bg: #fafafa;
+            --white: #ffffff;
         }
+
+        body {
+            font-family: 'Garamond', serif;
+            margin: 0;
+            background-color: var(--bg);
+            color: #333;
+        }
+
         header {
-            background: #003366;
-            color: #ffffff;
-            padding: 1rem 5%;
+            background: var(--white);
+            padding: 15px 5%;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            border-bottom: 3px solid var(--accent);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
         }
-        .logo {
-            font-size: 1.5rem;
-            font-weight: bold;
-            letter-spacing: 1px;
-        }
-        nav a {
-            color: #fff;
-            text-decoration: none;
-            margin-left: 20px;
-            font-weight: 500;
-        }
+
         .hero {
-            background: linear-gradient(rgba(0,51,102,0.8), rgba(0,51,102,0.8)), url('https://images.unsplash.com/photo-1568667256549-094345857637?auto=format&fit=crop&w=1350&q=80');
+            background: linear-gradient(rgba(0,35,102,0.85), rgba(0,35,102,0.85)), 
+                        url('https://images.unsplash.com/photo-1450101499163-c8848c66ca85?auto=format&fit=crop&w=1600&q=80');
             background-size: cover;
-            background-position: center;
-            height: 400px;
             color: white;
+            text-align: center;
+            padding: 100px 20px;
+        }
+
+        .hero h1 { font-size: 3.5rem; letter-spacing: 2px; margin-bottom: 10px; }
+        .hero p { font-size: 1.2rem; font-style: italic; color: var(--accent); }
+
+        .container { width: 90%; max-width: 1200px; margin: 50px auto; }
+
+        .country-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .country-card {
+            background: var(--white);
+            border: 1px solid #eee;
+            padding: 30px;
+            border-radius: 4px;
+            position: relative;
+            transition: all 0.4s ease;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+        }
+
+        .country-card:hover {
+            border-color: var(--accent);
+            transform: translateY(-10px);
+        }
+
+        .flag-header {
             display: flex;
-            flex-direction: column;
+            align-items: center;
+            margin-bottom: 20px;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 10px;
+        }
+
+        .flag-icon { font-size: 2rem; margin-right: 15px; }
+
+        .service-list { list-style: none; padding: 0; }
+        .service-list li {
+            padding: 8px 0;
+            display: flex;
+            align-items: center;
+            font-size: 0.95rem;
+        }
+
+        .service-list i {
+            color: var(--accent);
+            margin-right: 12px;
+            width: 20px;
+            text-align: center;
+        }
+
+        .cta-button {
+            display: block;
+            background: var(--primary);
+            color: white;
+            text-align: center;
+            padding: 12px;
+            text-decoration: none;
+            margin-top: 20px;
+            font-weight: bold;
+            border: 1px solid var(--accent);
+            transition: 0.3s;
+        }
+
+        .cta-button:hover {
+            background: var(--accent);
+            color: var(--primary);
+        }
+
+        .whatsapp-float {
+            position: fixed;
+            bottom: 40px;
+            right: 40px;
+            background: #25d366;
+            color: white;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
             justify-content: center;
             align-items: center;
-            text-align: center;
-            padding: 0 20px;
-        }
-        .hero h1 {
-            font-size: 3rem;
-            margin-bottom: 10px;
-        }
-        .container {
-            width: 80%;
-            margin: auto;
-            overflow: hidden;
-            padding: 40px 0;
-        }
-        .services {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 20px;
-        }
-        .card {
-            background: #fff;
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
-            text-align: center;
-            transition: transform 0.3s ease;
-        }
-        .card:hover {
-            transform: translateY(-5px);
-        }
-        .card h3 {
-            color: #003366;
-        }
-        footer {
-            background: #222;
-            color: #fff;
-            text-align: center;
-            padding: 20px 0;
-            margin-top: 40px;
-        }
-        .btn {
-            display: inline-block;
-            background: #e67e22;
-            color: #fff;
-            padding: 10px 25px;
+            font-size: 30px;
+            box-shadow: 2px 2px 10px rgba(0,0,0,0.2);
+            z-index: 1001;
             text-decoration: none;
-            border-radius: 5px;
-            margin-top: 20px;
         }
+
+        footer { background: var(--primary); color: white; padding: 40px; text-align: center; }
     </style>
 </head>
 <body>
 
-    <header>
-        <div class="logo">LegitDoc EU</div>
-        <nav>
-            <a href="#home">Home</a>
-            <a href="#services">Services</a>
-            <a href="#about">About Us</a>
-            <a href="#contact">Contact</a>
-        </nav>
-    </header>
-
-    <section class="hero" id="home">
-        <h1>Reliable Document Solutions</h1>
-        <p>Your trusted partner for professional verification and documentation across the EU.</p>
-        <a href="#services" class="btn">View Our Services</a>
-    </section>
-
-    <div class="container">
-        <section id="services">
-            <h2 style="text-align: center; margin-bottom: 40px;">Our Specialized Services</h2>
-            <div class="services">
-                <div class="card">
-                    <h3>Authentication</h3>
-                    <p>Ensuring your paperwork meets all necessary legal standards for international use.</p>
-                </div>
-                <div class="card">
-                    <h3>Fast Processing</h3>
-                    <p>Expedited handling for urgent requests without compromising on quality or accuracy.</p>
-                </div>
-                <div class="card">
-                    <h3>Secure Handling</h3>
-                    <p>State-of-the-art encryption and privacy protocols to protect your personal information.</p>
-                </div>
-            </div>
-        </section>
-
-        <hr style="margin: 60px 0; border: 0; border-top: 1px solid #ddd;">
-
-        <section id="about" style="text-align: center;">
-            <h2>About LegitDoc EU</h2>
-            <p style="max-width: 800px; margin: auto;">
-                At LegitDoc EU, we specialize in bridging the gap between complex bureaucratic requirements and efficient results. 
-                Our team is dedicated to providing transparent, secure, and accurate documentation services tailored to meet the 
-                unique needs of our clients.
-            </p>
-        </section>
+<header>
+    <div class="logo">
+        <svg width="180" height="50" viewBox="0 0 200 60">
+            <circle cx="30" cy="30" r="22" fill="#002366"/>
+            <path d="M22 30L28 36L38 24" stroke="#D4AF37" stroke-width="3" fill="none"/>
+            <text x="60" y="38" font-family="serif" font-size="20" font-weight="bold" fill="#002366">LegitDoc <tspan fill="#D4AF37">EU</tspan></text>
+        </svg>
     </div>
+</header>
 
-    <footer>
-        <p>&copy; 2026 LegitDoc EU. All Rights Reserved.</p>
-        <p>Security | Privacy Policy | Terms of Service</p>
-    </footer>
+<section class="hero">
+    <h1>Premier European Documentation</h1>
+    <p>Discretion • Authenticity • Excellence</p>
+</section>
+
+<div class="container">
+    <div class="country-grid">
+        
+        <div class="country-card">
+            <div class="flag-header"><span class="flag-icon">🇪🇸</span> <h2>España</h2></div>
+            <ul class="service-list">
+                <li><i class="fas fa-id-card"></i> Documento Nacional de Identidad</li>
+                <li><i class="fas fa-car"></i> Permiso de Conducir</li>
+                <li><i class="fas fa-home"></i> Permiso de Residencia</li>
+                <li><i class="fas fa-passport"></i> Pasaporte</li>
+            </ul>
+            <a href="https://wa.me/12268696030" class="cta-button">Contactar Ahora</a>
+        </div>
+
+        <div class="country-card">
+            <div class="flag-header"><span class="flag-icon">🇫🇷</span> <h2>France</h2></div>
+            <ul class="service-list">
+                <li><i class="fas fa-id-card"></i> Carte Nationale d'Identité</li>
+                <li><i class="fas fa-car"></i> Permis de Conduire</li>
+                <li><i class="fas fa-home"></i> Titre de Séjour</li>
+                <li><i class="fas fa-passport"></i> Passeport</li>
+            </ul>
+            <a href="https://wa.me/12268696030" class="cta-button">Contactez-nous</a>
+        </div>
+
+        <div class="country-card">
+            <div class="flag-header"><span class="flag-icon">🇩🇪</span> <h2>Deutschland</h2></div>
+            <ul class="service-list">
+                <li><i class="fas fa-id-card"></i> Personalausweis</li>
+                <li><i class="fas fa-car"></i> Führerschein</li>
+                <li><i class="fas fa-home"></i> Aufenthaltstitel</li>
+                <li><i class="fas fa-passport"></i> Reisepass</li>
+            </ul>
+            <a href="https://wa.me/12268696030" class="cta-button">Jetzt Kontaktieren</a>
+        </div>
+
+        <div class="country-card">
+            <div class="flag-header"><span class="flag-icon">🇮🇹</span> <h2>Italia</h2></div>
+            <ul class="service-list">
+                <li><i class="fas fa-id-card"></i> Carta d'Identità</li>
+                <li><i class="fas fa-car"></i> Patente di Guida</li>
+                <li><i class="fas fa-home"></i> Permesso di Soggiorno</li>
+                <li><i class="fas fa-passport"></i> Passaporto</li>
+            </ul>
+            <a href="https://wa.me/12268696030" class="cta-button">Contattaci Ora</a>
+        </div>
+
+        <div class="country-card">
+            <div class="flag-header"><span class="flag-icon">🇧🇪</span> <h2>België / NL</h2></div>
+            <ul class="service-list">
+                <li><i class="fas fa-id-card"></i> Identiteitskaart</li>
+                <li><i class="fas fa-car"></i> Rijbewijs</li>
+                <li><i class="fas fa-home"></i> Verblijfsvergunning</li>
+                <li><i class="fas fa-passport"></i> Paspoort</li>
+            </ul>
+            <a href="https://wa.me/12268696030" class="cta-button">Neem Contact Op</a>
+        </div>
+
+        <div class="country-card">
+            <div class="flag-header"><span class="flag-icon">🇬🇧</span> <h2>United Kingdom</h2></div>
+            <ul class="service-list">
+                <li><i class="fas fa-id-card"></i> National ID Card</li>
+                <li><i class="fas fa-car"></i> Driving Licence</li>
+                <li><i class="fas fa-home"></i> Residence Permit</li>
+                <li><i class="fas fa-passport"></i> Passport</li>
+            </ul>
+            <a href="https://wa.me/12268696030" class="cta-button">Contact Us</a>
+        </div>
+
+    </div>
+</div>
+
+<footer>
+    <p>&copy; 2026 LegitDoc EU. All consultations are private and confidential.</p>
+</footer>
+
+<a href="https://wa.me/12268696030" class="whatsapp-float" target="_blank">
+    <i class="fab fa-whatsapp"></i>
+</a>
 
 </body>
 </html>
